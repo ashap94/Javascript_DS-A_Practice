@@ -26,6 +26,7 @@ function swap(left, right, array) {
   array[left] = rightEl;
 }
 
-a = [5, 2, 4, 4, 6, 4, 4, 3];
+const a = [5, 2, 4, 4, 6, 4, 4, 3];
+const pivot = 4;
 
-console.log(dutchNationalFlag(a, 4));
+console.log(dutchNationalFlag(a, pivot));
