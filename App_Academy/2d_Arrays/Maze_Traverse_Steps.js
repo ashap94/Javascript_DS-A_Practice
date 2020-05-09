@@ -76,6 +76,6 @@ const maze = [
   ["#", ".", ".", "."],
 ];
 
-const steps = 6;
+const steps = 5;
 
 canWin(maze, steps);
