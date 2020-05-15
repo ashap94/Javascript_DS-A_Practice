@@ -14,21 +14,19 @@
 // "i like mango tan go"
 // "i like man go tango"
 
-function wordBreak(s, wordDict) {
-  // memo array, if index gets modified to NOT_FOUND, recursive call at index will return false to prevent further work done at that startIdx b/c it has already been determined that no substrings at that index will complete the complete segement of strings in the result
-  let memo = new Array(s.length).fill("UNVISITED");
-  let result = [];
+function wordBreak(s, dictionary) {
+  const memo = new Array(s.length).fill("UNVISITED");
+  const result = [];
 
-  if (wordBreakHelper(s, wordDict, 0, result, memo)) {
-    console.log(result);
-    return;
+  if (wordBreakHelper(s, dictionary, 0, memo, result)) {
+    return result.join(" ");
   } else {
     return null;
   }
 }
 
-function wordBreakHelper(s, wordDict, startIdx, result, memo) {
-  if (startIdx === s.length) {
+function wordBreakHelper(string, dictionary, startIdx, memo, result) {
+  if (startIdx === string.length) {
     return true;
   }
 
@@ -36,11 +34,11 @@ function wordBreakHelper(s, wordDict, startIdx, result, memo) {
     return false;
   }
 
-  for (let i = startIdx; i < s.length; i++) {
-    let substring = s.substring(startIdx, i + 1);
-    if (wordDict.find((sub) => sub == substring)) {
+  for (let i = startIdx; i < string.length; i++) {
+    let substring = string.substring(startIdx, i + 1);
+    if (dictionary.find((word) => word === substring)) {
       result.push(substring);
-      if (wordBreakHelper(s, wordDict, i + 1, result, memo)) {
+      if (wordBreakHelper(string, dictionary, i + 1, memo, result)) {
         return true;
       } else {
         result.pop();
@@ -48,6 +46,7 @@ function wordBreakHelper(s, wordDict, startIdx, result, memo) {
       }
     }
   }
+
   return false;
 }
 
@@ -55,4 +54,4 @@ let s = "ilikemangotango";
 let wordDict1 = ["i", "like", "mango", "tango"];
 let wordDict2 = ["i", "like", "man", "tan", "go"];
 
-wordBreak(s, wordDict2);
+console.log(wordBreak(s, wordDict2));
