@@ -74,6 +74,43 @@ class LinkedList {
     }
     return this;
   }
+
+  remove(index) {
+    if (index <= 1) {
+      let holdingPointer = this.head;
+      this.head = holdingPointer.next;
+      holdingPointer.next = null;
+      this.length--;
+      return this;
+    }
+
+    if (index >= this.length) {
+      let nodeBeforeLast = this.getNode(index - 1);
+      this.tail = nodeBeforeLast;
+      this.tail.next = null;
+
+      this.length--;
+
+      return this;
+    }
+
+    let prevNode = this.head;
+    let currentNode = prevNode.next;
+    let i = 2;
+
+    while (true) {
+      if (i === index) {
+        prevNode.next = currentNode.next;
+        currentNode.next = null;
+        this.length--;
+        return this;
+      }
+
+      prevNode = currentNode;
+      currentNode = currentNode.next;
+      i++;
+    }
+  }
 }
 
 const list = new LinkedList(8);
@@ -81,7 +118,7 @@ list.append(4);
 list.append(7);
 list.append(5);
 list.insert(1, 6);
-// list.getNode(1);
-// console.log(list)
+list.remove(1);
+console.log(list);
 // list.prepend(12)
 // console.log(list)
