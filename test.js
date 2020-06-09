@@ -1,9 +1,11 @@
-function generateBooleanBoard() {
-  let grid = new Array(9);
-  for (let i = 0; i < grid.length; i++) {
-    grid[i] = new Array(10).fill(false);
-  }
-  return grid;
-}
+let arr = [
+  { id: 1, name: "aaron" },
+  { id: 2, name: "bob" },
+  { id: 3, name: "jack" },
+];
 
-console.table(generateBooleanBoard());
+arr.forEach((el, idx) => {
+  arr[idx] = Object.assign(el, { elephant: idx });
+});
+
+console.log(arr);
