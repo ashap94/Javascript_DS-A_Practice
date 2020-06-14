@@ -3,7 +3,7 @@ class TaskPool {
     this.queue = [];
   }
 
-  async run() {
+  run() {
     const res = await Promise.all(this.queue);
     this.queue = [];
     console.log(res);
@@ -12,6 +12,7 @@ class TaskPool {
 }
 
 const maxConcurrency = async (max) => {
+
   let urls = [
     "https://jsonplaceholder.typicode.com/posts",
     "https://jsonplaceholder.typicode.com/comments",
@@ -20,6 +21,8 @@ const maxConcurrency = async (max) => {
     "https://jsonplaceholder.typicode.com/todos",
     "https://jsonplaceholder.typicode.com/users",
   ];
+
+// [{url1, resolved: false }, {url2, resolved: false}, {url3, resolved: false}]
 
   let pool = new TaskPool(max);
 
