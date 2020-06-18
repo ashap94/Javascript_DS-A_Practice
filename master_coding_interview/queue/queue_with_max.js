@@ -57,6 +57,10 @@ class QueueWithMax {
     }
   }
 
+  length() {
+    return this.queue.length;
+  }
+
   isEmpty() {
     return this.queue.isEmpty();
   }
@@ -66,11 +70,15 @@ class QueueWithMax {
   }
 }
 
-const queue = new QueueWithMax();
-queue.enqueue(5);
-queue.enqueue(7);
-queue.enqueue(6);
-queue.enqueue(8);
-queue.dequeue();
+module.exports = {
+  QueueWithMax,
+};
 
-console.log(queue);
+// const queue = new QueueWithMax();
+// queue.enqueue(5);
+// queue.enqueue(7);
+// queue.enqueue(6);
+// queue.enqueue(8);
+// queue.dequeue();
+
+// console.log(queue);
