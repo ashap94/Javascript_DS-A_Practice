@@ -20,7 +20,6 @@ function cloneEvenNumbers(a) {
             end--;
             a[end] = a[i];
         }
-
         i--;
     }
 
@@ -28,17 +27,14 @@ function cloneEvenNumbers(a) {
 }
 
 function findLastNumber(a) {
-    let i = a.length;
-
-    while (i >= 0) {
-        if (i == 1) {
-            return i;
-        } else if ( a[i-1] !== -1) {
-            return i;
-        }
-
+    let i = a.length - 1;
+    
+    while (i >= 0 && a[i] == -1) {
         i--;
     }
+    
+    return i;
+    
 }
 
 
